@@ -34,13 +34,7 @@ export default {
 
     @media (min-width: 768px) {
         #date-selector {
-            width: 300px;
-        }
-    }
-
-    @media (min-width: 1280px) {
-        #date-selector {
-            width: 350px;
+            width: 250px;
         }
     }
 </style>

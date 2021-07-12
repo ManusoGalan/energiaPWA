@@ -8,7 +8,8 @@
           <span class="font-bold">{{hours[0].price}}</span>
         </div>
       </div>
-      <div class="card shadow w-full h-32 rounded bg-white flex justify-center items-center">
+      <div class="card shadow w-full h-32 rounded bg-white flex flex-col justify-center items-center">
+        <p class="mb-4 font-bold">El precio el {{ new Date(hours[1].hour).getDate() }}  de {{ new Intl.DateTimeFormat('es-ES', { month: 'short' }).format(new Date(hours[1].hour)) }} a la{{new Date(hours[1].hour).getHours() != 1 ?  's' : ''}} {{ new Date(hours[1].hour).getHours() < 10 ? '0' : ''}}{{ new Date(hours[1].hour).getHours() }}:00 fue</p>
         <span class="font-bold">{{hours[1].price}}</span>
       </div>
       <div class="flex items-center py-6">
