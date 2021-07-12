@@ -1,20 +1,26 @@
 <template>
-  <div>
-    <p>¿Cuál fue el precio de la luz el</p>
-    <button v-on:click="addDay">
-      Add day
-    </button>
-    <DateSelector v-bind:date="date.getTime()" />
-    <button v-on:click="subDay">
-      Sub day
-    </button>
-    <p>a las</p>
-    <div class="clock-container">
+  <div class="bg-yellow-300 h-full w-full absolute px-6 flex flex-col justify-center items-center">
+    <p class="text-xl font-bold mb-6 md:text-3xl md:mb-10 xl:text-4xl xl:mb-12">¿Cuál {{ verbTense }} el precio de la luz el</p>
+    <div class="flex mb-6 md:mb-10 xl:mb-12">
+      <button v-on:click="subDay">
+        <ChevronLeftIcon class="h-8 w-8" />
+      </button>
+      <DateSelector v-bind:date="date.getTime()" />
+      <button v-on:click="addDay">
+        <ChevronRightIcon class="h-8 w-8" />
+      </button>
+    </div>
+    <p class="text-xl font-bold mb-6 md:text-3xl md:mb-10 xl:text-4xl xl:mb-12">a las</p>
+    <div class="clock-container relative max-w-full mb-20">
       <button v-on:click="addHour"></button>
       <HourSelector v-bind:hour="date.getHours()" />
       <button v-on:click="subHour"></button>
     </div>
-    <NuxtLink v-bind:to="`/${ date.getTime() }`">Consultar hora</NuxtLink>
+    <NuxtLink v-bind:to="`/${ date.getTime() }`">
+      <div class="shadow-md rounded-full bg-white p-4">
+        <ChevronRightIcon class="h-6 w-6"/>
+      </div>
+    </NuxtLink>
   </div>
 </template>
 
@@ -22,8 +28,21 @@
 export default {
   data: function() {
     return {
-      date: new Date()
+      date: new Date(),
+      verbTense: 'es'
     };
+  },
+
+  updated: function(){
+    const currentDayOnlyHours = new Date().setMinutes(0, 0, 0)
+    const selectedDayOnlyHours = this.date.setMinutes(0, 0, 0)
+    if ( currentDayOnlyHours === selectedDayOnlyHours ) {
+      this.verbTense = 'es'
+    } else if ( currentDayOnlyHours > selectedDayOnlyHours ) {
+      this.verbTense = 'fue'
+    } else {
+      this.verbTense = 'será'
+    }
   },
 
   methods: {
@@ -54,17 +73,12 @@ export default {
 </script>
 
 <style>
-.clock-container {
-  position: relative;
-  max-width: 650px;
-}
-
 .clock-container > button {
   position: absolute;
   width: 0;
   height: 0;
   background: transparent;
-  left: 17.5%;
+  left: 23.5%;
   padding: 0;
 }
 

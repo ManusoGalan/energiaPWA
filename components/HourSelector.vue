@@ -1,7 +1,7 @@
 <template>
   <div id="display-container">
-    <div id="display">
-      <ClockNumber :digit="hourHigh" />
+    <div id="display" style="transform: scale(.5)">
+      <ClockNumber v-on:number-mounted="calcScale" :digit="hourHigh" />
       <ClockNumber :digit="hourLow" />
       <span class="two-points">:</span>
       <ClockNumber />
@@ -30,55 +30,51 @@ export default {
     hour: function() {
       this.hourHigh = parseInt(this.hour / 10);
       this.hourLow = this.hour % 10;
-    },
-    $route: function(to, from) {
-      calcScale();
     }
+  },
+
+  created: function() {
+    window.addEventListener("resize", this.calcScale);
   },
 
   mounted: function() {
     this.hourHigh = parseInt(this.hour / 10);
     this.hourLow = this.hour % 10;
-
-    this.$nextTick(function() {
-      document.getElementById("display").style.transform = "scale(0.5)";
-      window.addEventListener("resize", calcScale);
-      calcScale();
-    });
   },
 
   destroyed: function() {
-    window.removeEventListener("resize", calcScale);
+    window.removeEventListener("resize", this.calcScale);
+  },
+
+  methods: {
+    calcScale: function(e) {
+      const containerWidth =
+        document.getElementById("display-container").getBoundingClientRect().width -
+        30;
+
+      const containerScale = parseFloat(
+        document
+          .getElementById("display")
+          .style.transform.split("(")[1]
+          .split(")")[0]
+      );
+
+      const elementWidth = document
+        .getElementById("display")
+        .getBoundingClientRect().width;
+
+      const newScale = containerWidth / (elementWidth / containerScale);
+
+      document.getElementById("display").style.transform = `scale(${
+        newScale > 0.5 ? 0.5 : newScale
+      })`;
+
+      document.getElementById(
+        "display-container"
+      ).style.height = `${document.getElementById("display").getBoundingClientRect()
+        .height + 100}px`;
+    }
   }
-};
-
-const calcScale = () => {
-  console.log("Calculating scale");
-  const containerWidth =
-    document.getElementById("display-container").getBoundingClientRect().width -
-    30;
-
-  const containerScale = parseFloat(
-    document
-      .getElementById("display")
-      .style.transform.split("(")[1]
-      .split(")")[0]
-  );
-
-  const elementWidth = document
-    .getElementById("display")
-    .getBoundingClientRect().width;
-
-  const newScale = containerWidth / (elementWidth / containerScale);
-
-  document.getElementById("display").style.transform = `scale(${
-    newScale > 0.5 ? 0.5 : newScale
-  })`;
-
-  document.getElementById(
-    "display-container"
-  ).style.height = `${document.getElementById("display").getBoundingClientRect()
-    .height + 100}px`;
 };
 </script>
 <style>

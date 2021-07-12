@@ -18,11 +18,12 @@ export default {
       default: 0
     }
   },
+  
   mounted: function() {
-    this.$nextTick(function() {
-      this.lightUpNumber(this.digit);
-    });
+    this.lightUpNumber(this.digit);
+    this.$emit('number-mounted')
   },
+
   watch: {
     digit: function(newVal, oldVal) {
       this.lightUpNumber(this.digit);

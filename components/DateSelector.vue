@@ -1,18 +1,12 @@
 <template>
-    <div>
-    {{ localizer.format(prevDay) }}
-    {{ localizer.format(currentDay) }}
-    {{ localizer.format(nextDay) }}
-    </div>
+    <span id="date-selector" class="text-center font-bold underline text-3xl md:text-4xl">{{ localizer.format(currentDay) }}</span>
 </template>
 
 <script>
 export default {
     data: function() {
         return {
-            prevDay: new Date(),
             currentDay: new Date(),
-            nextDay: new Date(),
             localizer: new Intl.DateTimeFormat('es-ES', { weekday: 'short', month: 'short', day: 'numeric' })
         }
     },
@@ -26,10 +20,27 @@ export default {
 
     watch: {
         date: function() {
-            this.prevDay = new Date(this.date - 24 * 60 * 60 * 1000 )
             this.currentDay = new Date(this.date)
-            this.nextDay = new Date(this.date + 24 * 60 * 60 * 1000 )
         }
     }
 }
 </script>
+
+<style>
+    #date-selector {
+        width: 175px;
+        display: inline-block
+    }
+
+    @media (min-width: 768px) {
+        #date-selector {
+            width: 300px;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        #date-selector {
+            width: 350px;
+        }
+    }
+</style>
