@@ -65,14 +65,16 @@ export default {
 
       const newScale = containerWidth / (elementWidth / containerScale);
 
-      document.getElementById("display").style.transform = `scale(${
-        newScale > 0.5 ? 0.5 : newScale
-      })`;
+      document.querySelectorAll("#display").forEach(el => {
+        el.style.transform = `scale(${
+          newScale > 0.5 ? 0.5 : newScale
+        })`;
+      })
 
-      document.getElementById(
-        "display-container"
-      ).style.height = `${document.getElementById("display").getBoundingClientRect()
-        .height + 100}px`;
+      document.querySelectorAll("#display-container").forEach(el => {
+        el.style.height = 
+          `${document.getElementById("display").getBoundingClientRect().height + 100}px`;
+      })
     }
   }
 };

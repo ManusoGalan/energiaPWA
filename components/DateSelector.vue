@@ -1,12 +1,11 @@
 <template>
-    <span id="date-selector" class="text-center font-bold underline text-3xl md:text-4xl">{{ localizer.format(currentDay) }}</span>
+    <span id="date-selector" class="text-center font-bold underline text-3xl md:text-4xl">{{ localizer.format(date) }}</span>
 </template>
 
 <script>
 export default {
     data: function() {
         return {
-            currentDay: new Date(),
             localizer: new Intl.DateTimeFormat('es-ES', { weekday: 'short', month: 'short', day: 'numeric' })
         }
     },
