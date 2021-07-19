@@ -1,7 +1,12 @@
 {
-  "name": "energia-pwa",
+  "name": "i-luz",
   "version": "1.0.0",
   "private": true,
+  "description": "Review Spain's energy prices",
+  "author": {
+    "name": "Manuel Galán",
+    "email": "manugalangarcia@gmail.com"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
