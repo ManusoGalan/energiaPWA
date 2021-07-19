@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'energiaPWA',
+    title: 'iLuz',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -40,6 +40,11 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    meta: {
+      name: 'iLuz',
+      lang: 'es',
+      theme_color: '#fcd34d'
+    },
     manifest: {
       name: 'iLuz',
       lang: 'es'
