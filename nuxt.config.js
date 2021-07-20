@@ -52,7 +52,7 @@ export default {
     },
     manifest: {
       name: 'iLuz. Review Spain\'s energy prices',
-      shortName: 'iLuz',
+      short_name: 'iLuz',
       description: 'Review Spain\'s energy prices',
       icons: [
         {
