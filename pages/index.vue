@@ -51,32 +51,30 @@
     </transition>
     <transition v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave" v-bind:css="false">
       <div v-if="!loadingHours && hours.length" class="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center px-6">
-        <div v-if="hours.length != 0">
-          <button class="absolute top-4 left-4" @click="resetData"><ChevronLeftIcon class="h-10 w-10" /></button>
-          <div class="flex flex-col">
-            <transition appear v-on:before-enter="showTopCardBefore" v-on:enter="showTopCard">
-              <div class="flex items-center py-6">
-                <p class="w-1/2 mr-4 font-bold">Una hora antes, el precio {{ hourBeforeTense }} <span class="underline">{{ hours[0].price > hours[1].price ? 'más alto' : 'más bajo' }}</span></p>
-                <div class="card shadow w-1/2 h-32 bg-white rounded ml-4 flex justify-center items-center">
-                  <span class="font-bold">{{hours[0].price}}<br>€/kWh</span>
-                </div>
+        <button class="absolute top-4 left-4" @click="resetData"><ChevronLeftIcon class="h-10 w-10" /></button>
+        <div class="flex flex-col justify-center h-full">
+          <transition appear v-on:before-enter="showTopCardBefore" v-on:enter="showTopCard">
+            <div class="flex items-center py-6">
+              <p class="w-1/2 mr-4 font-bold">Una hora antes, el precio {{ hourBeforeTense }} <span class="underline">{{ hours[0].price > hours[1].price ? 'más alto' : 'más bajo' }}</span></p>
+              <div class="card shadow w-1/2 h-32 bg-white rounded ml-4 flex justify-center items-center">
+                <span class="font-bold">{{hours[0].price}}<br>€/kWh</span>
               </div>
-            </transition>
-            <transition appear v-on:before-enter="popCardBefore" v-on:enter="popCard">
-              <div class="card shadow w-full h-32 rounded bg-white flex flex-col justify-center items-center">
-                <p class="mb-4 font-bold">El precio el {{ new Date(hours[1].hour).getDate() }}  de {{ new Intl.DateTimeFormat('es-ES', { month: 'short' }).format(new Date(hours[1].hour)) }} a la{{new Date(hours[1].hour).getHours() != 1 ?  's' : ''}} {{ new Date(hours[1].hour).getHours() < 10 ? '0' : ''}}{{ new Date(hours[1].hour).getHours() }}:00 {{verbTense}}</p>
-                <span class="font-bold">{{hours[1].price}} €/kWh</span>
+            </div>
+          </transition>
+          <transition appear v-on:before-enter="popCardBefore" v-on:enter="popCard">
+            <div class="card shadow w-full h-32 rounded bg-white flex flex-col justify-center items-center">
+              <p class="mb-4 font-bold">El precio el {{ new Date(hours[1].hour).getDate() }}  de {{ new Intl.DateTimeFormat('es-ES', { month: 'short' }).format(new Date(hours[1].hour)) }} a la{{new Date(hours[1].hour).getHours() != 1 ?  's' : ''}} {{ new Date(hours[1].hour).getHours() < 10 ? '0' : ''}}{{ new Date(hours[1].hour).getHours() }}:00 {{verbTense}}</p>
+              <span class="font-bold">{{hours[1].price}} €/kWh</span>
+            </div>
+          </transition>
+          <transition appear v-on:before-enter="showBottomCardBefore" v-on:enter="showBottomCard">
+            <div class="flex items-center py-6">
+              <div class="card w-1/2 h-32 bg-white shadow rounded mr-4 flex justify-center items-center">
+                <span class="font-bold">{{hours[2].price}}<br>€/kWh</span>
               </div>
-            </transition>
-            <transition appear v-on:before-enter="showBottomCardBefore" v-on:enter="showBottomCard">
-              <div class="flex items-center py-6">
-                <div class="card w-1/2 h-32 bg-white shadow rounded mr-4 flex justify-center items-center">
-                  <span class="font-bold">{{hours[2].price}}<br>€/kWh</span>
-                </div>
-                <p class="w-1/2 ml-4 font-bold">Una hora después, el precio {{ hourAfterTense }} <span class="underline">{{ hours[2].price > hours[1].price ? 'más alto' : 'más bajo' }}</span></p>
-              </div>
-            </transition>
-          </div>
+              <p class="w-1/2 ml-4 font-bold">Una hora después, el precio {{ hourAfterTense }} <span class="underline">{{ hours[2].price > hours[1].price ? 'más alto' : 'más bajo' }}</span></p>
+            </div>
+          </transition>
         </div>
       </div>
     </transition>
@@ -222,25 +220,25 @@ export default {
     },
 
     showTopCardBefore: function(el) {
-      el.style.transform = 'translateY(-200%)'
+      el.style.transform = 'translateY(-300%)'
     },
     showTopCard: function(el, done) {
       anime({
         targets: el,
         translateY: 0,
-        delay: 1200,
+        delay: 700,
         complete: done
       })
     },
 
     showBottomCardBefore: function(el) {
-      el.style.transform = 'translateY(200%)'
+      el.style.transform = 'translateY(300%)'
     },
     showBottomCard: function(el, done) {
       anime({
         targets: el,
         translateY: 0,
-        delay: 1200,
+        delay: 700,
         complete: done
       })
     },
