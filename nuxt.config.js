@@ -40,7 +40,7 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
-    icons: false,
+    icon: false,
     meta: {
       name: 'iLuz',
       lang: 'es',
@@ -49,7 +49,51 @@ export default {
     manifest: {
       name: 'iLuz',
       lang: 'es',
-      start_url: '/'
+      start_url: '/',
+      icons: [
+        {
+          "src": "/images/icon64x64.png",
+          "type": "image/png",
+          "sizes": "64x64",
+          "purpose": "maskable"
+        },
+        {
+          "src": "/images/icon120x120.png",
+          "type": "image/png",
+          "sizes": "120x120",
+          "purpose": "maskable"
+        },
+        {
+          "src": "/images/icon144x144.png",
+          "type": "image/png",
+          "sizes": "144x144",
+          "purpose": "maskable"
+        },
+        {
+          "src": "/images/icon152x152.png",
+          "type": "image/png",
+          "sizes": "152x152",
+          "purpose": "maskable"
+        },
+        {
+          "src": "/images/icon192x192.png",
+          "type": "image/png",
+          "sizes": "192x192",
+          "purpose": "maskable"
+        },
+        {
+          "src": "/images/icon384x384.png",
+          "type": "image/png",
+          "sizes": "384x384",
+          "purpose": "maskable"
+        },
+        {
+          "src": "/images/icon512x512.png",
+          "type": "image/png",
+          "sizes": "512x512",
+          "purpose": "maskable"
+        }
+      ]
     }
   },
 
