@@ -55,43 +55,43 @@ export default {
           "src": "/images/icon64x64.png",
           "type": "image/png",
           "sizes": "64x64",
-          "purpose": ["any", "maskable"]
+          "purpose": "any maskable"
         },
         {
           "src": "/images/icon120x120.png",
           "type": "image/png",
           "sizes": "120x120",
-          "purpose": ["any", "maskable"]
+          "purpose": "any maskable"
         },
         {
           "src": "/images/icon144x144.png",
           "type": "image/png",
           "sizes": "144x144",
-          "purpose": ["any", "maskable"]
+          "purpose": "any maskable"
         },
         {
           "src": "/images/icon152x152.png",
           "type": "image/png",
           "sizes": "152x152",
-          "purpose": ["any", "maskable"]
+          "purpose": "any maskable"
         },
         {
           "src": "/images/icon192x192.png",
           "type": "image/png",
           "sizes": "192x192",
-          "purpose": ["any", "maskable"]
+          "purpose": "any maskable"
         },
         {
           "src": "/images/icon384x384.png",
           "type": "image/png",
           "sizes": "384x384",
-          "purpose": ["any", "maskable"]
+          "purpose": "any maskable"
         },
         {
           "src": "/images/icon512x512.png",
           "type": "image/png",
           "sizes": "512x512",
-          "purpose": ["any", "maskable"]
+          "purpose": "any maskable"
         }
       ]
     }
