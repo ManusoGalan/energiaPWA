@@ -42,14 +42,18 @@ export default {
   pwa: {
     icon: false,
     meta: {
+      mobileAppIOS: true,
+      favicon: '/favicon.ico',
       name: 'iLuz',
-      lang: 'es',
-      theme_color: '#fcd34d'
+      author: 'Manuel Galán <manugalangarcia@gmail.com>',
+      description: 'Review Spain\'s energy prices',
+      theme_color: '#fcd34d',
+      lang: 'es'
     },
     manifest: {
-      name: 'iLuz',
-      lang: 'es',
-      start_url: '/',
+      name: 'iLuz. Review Spain\'s energy prices',
+      shortName: 'iLuz',
+      description: 'Review Spain\'s energy prices',
       icons: [
         {
           "src": "/images/icon64x64.png",
@@ -93,7 +97,9 @@ export default {
           "sizes": "512x512",
           "purpose": "any maskable"
         }
-      ]
+      ],
+      start_url: '/',
+      lang: 'es',
     }
   },
 
