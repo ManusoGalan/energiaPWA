@@ -40,6 +40,7 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    icons: false,
     meta: {
       name: 'iLuz',
       lang: 'es',
@@ -47,7 +48,8 @@ export default {
     },
     manifest: {
       name: 'iLuz',
-      lang: 'es'
+      lang: 'es',
+      start_url: '/'
     }
   },
 
